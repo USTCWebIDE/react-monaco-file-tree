@@ -5,7 +5,7 @@
 1. 使用typescript
 2. 重定义了文件目录树的结构以及建树操作，使得结构更清晰
 3. 弃用react-highlight，使用@monaco-editor/react
-4. 启用react-ui，改用@emotion/styled
+4. 弃用react-ui，改用@emotion/styled
 5. 修改图标方案
 
 
