@@ -7,7 +7,7 @@ import {Type, File, Directory, findFileByName} from "./utils/file-manager";
 import './App.css';
 import {FileTree} from "./components/file-tree";
 
-const CURRENT_SANDBOX_ID = '84jkx'
+const CURRENT_SANDBOX_ID = '5i0e40'
 
 const dummyDir: Directory = {
   id: "1",
@@ -24,7 +24,7 @@ const App = () => {
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined)
   useFilesFromSandbox(CURRENT_SANDBOX_ID, root => {
     if (!selectedFile) {
-      setSelectedFile(findFileByName(root, "index.js"));
+      setSelectedFile(findFileByName(root, "index.tsx"));
     }
     setRootDir(root);
   })

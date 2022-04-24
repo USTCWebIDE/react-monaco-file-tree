@@ -64,7 +64,7 @@ const FileDiv = ({file, icon, selectedFile, onClick}: {
       isSelected={isSelected}
       onClick={onClick}>
       <FileIcon
-        name={icon || "file"}
+        name={icon}
         extension={file.name.split('.').pop() || ""}/>
       <span style={{marginLeft: 1}}>
         {file.name}
@@ -138,8 +138,8 @@ const isChildSelected = (directory: Directory, selectedFile: File) => {
   return res;
 }
 
-const FileIcon = ({extension, name}: { name: string, extension: string }) => {
-  let icon = getIcon(extension, name);
+const FileIcon = ({extension, name}: { name?: string, extension?: string }) => {
+  let icon = getIcon(extension || "", name || "");
   return (
     <Span>
       {icon}

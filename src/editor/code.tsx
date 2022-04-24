@@ -8,13 +8,18 @@ export const Code = ({selectedFile}: { selectedFile: File | undefined }) => {
     return null
 
   const code = selectedFile.content
-  let extension = selectedFile.name.split('.').pop()
+  let language = selectedFile.name.split('.').pop()
+
+  if (language === "js" || language === "jsx")
+    language = "javascript";
+  else if (language === "ts" || language === "tsx")
+    language = "typescript"
 
   return (
     <Div>
       <Editor
         height="100vh"
-        language={extension === "js" ? "javascript" : extension}
+        language={language}
         value={code}
         theme="vs-dark"
       />
@@ -26,5 +31,4 @@ const Div = styled.div`
   width: calc(100% - 250px);
   margin: 0;
   font-size: 16px;
-  overflow: scroll;
 `
