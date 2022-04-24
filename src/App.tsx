@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import Sidebar from "./components/sidebar";
+import {useFilesFromSandbox} from "./utils";
+import {Code} from "./editor/code";
+import styled from "@emotion/styled";
+import {Type, File, Directory, findFileByName} from "./utils/file-manager";
 import './App.css';
+import {FileTree} from "./components/file-tree";
 
-function App() {
+const CURRENT_SANDBOX_ID = '84jkx'
+
+const dummyDir: Directory = {
+  id: "1",
+  name: "loading...",
+  type: Type.DUMMY,
+  parentId: undefined,
+  depth: 0,
+  dirs: [],
+  files: []
+};
+
+const App = () => {
+  const [rootDir, setRootDir] = useState(dummyDir);
+  const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined)
+  useFilesFromSandbox(CURRENT_SANDBOX_ID, root => {
+    if (!selectedFile) {
+      setSelectedFile(findFileByName(root, "index.js"));
+    }
+    setRootDir(root);
+  })
+
+  const onSelect = (file: File) => setSelectedFile(file);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Main>
+        <Sidebar>
+          <FileTree
+            rootDir={rootDir}
+            selectedFile={selectedFile}
+            onSelect={onSelect}/>
+        </Sidebar>
+        <Code selectedFile={selectedFile}/>
+      </Main>
     </div>
   );
 }
+
+const Main = styled.main`
+  display: flex;
+`
 
 export default App;
