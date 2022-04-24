@@ -1,4 +1,4 @@
-export const enum Type {
+export enum Type {
   FILE,       // 文件
   DIRECTORY,  // 目录
   DUMMY,      // 虚拟文件（用于未成功获取到文件时展示）

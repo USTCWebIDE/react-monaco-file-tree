@@ -22,6 +22,7 @@ export const Code = ({selectedFile}: { selectedFile: File | undefined }) => {
         language={language}
         value={code}
         theme="vs-dark"
+        options={{fontSize: 16}}
       />
     </Div>
   )
@@ -30,5 +31,4 @@ export const Code = ({selectedFile}: { selectedFile: File | undefined }) => {
 const Div = styled.div`
   width: calc(100% - 250px);
   margin: 0;
-  font-size: 16px;
 `
