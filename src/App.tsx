@@ -7,7 +7,7 @@ import {Type, File, Directory, findFileByName} from "./utils/file-manager";
 import './App.css';
 import {FileTree} from "./components/file-tree";
 
-const CURRENT_SANDBOX_ID = '5i0e40'
+const CURRENT_SANDBOX_ID = 'ww9kis'
 
 const dummyDir: Directory = {
   id: "1",
